@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import io.rcw.uuidv7.UUIDv7;
 import org.junit.jupiter.api.Test;
 
+import java.security.SecureRandom;
 import java.util.UUID;
 
 public class UUIDv7CreationTest {
@@ -18,7 +19,19 @@ public class UUIDv7CreationTest {
         long rand_a = 0xCC3L;
         long rand_b = 0x18C4DC0C0C07398FL;
 
-        assertEquals(UUIDv7.newUUIDv7(unix_ts, rand_a, rand_b), TEST_UUID);
+        assertEquals(TEST_UUID, UUIDv7.newUUIDv7(unix_ts, rand_a, rand_b));
+    }
+
+    @Test
+    public void testGeneration() {
+        final SecureRandom random = new SecureRandom();
+
+        for (int i = 0; i < 1_000_000; i++) {
+           UUID generated = UUIDv7.newUUIDv7(random);
+
+           assertEquals(7, generated.version());
+           assertEquals(0b10, generated.variant(), Long.toBinaryString(generated.getLeastSignificantBits()));
+        }
     }
 
 }
