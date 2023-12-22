@@ -6,6 +6,7 @@ import java.util.UUID;
 public class UUIDv7 {
     public static final long BIT48_MASK = 0x7FFFFFFFFFFFL;
     public static final long BIT62_MASK = 0x1FFFFFFFFFFFFFFFL;
+    public static final long BIT12_MAX = 0x1000; // 4096
     public static final int VER_7_MSB = 0b0111;
 
     public static UUID newUUIDv7(long ts, long rand_a, long rand_b) {
@@ -26,6 +27,6 @@ public class UUIDv7 {
     }
 
     public static UUID newUUIDv7(final SecureRandom random) {
-        return newUUIDv7(System.currentTimeMillis(), random.nextLong(2048), random.nextLong(BIT62_MASK));
+        return newUUIDv7(System.currentTimeMillis(), random.nextLong(BIT12_MAX), random.nextLong(BIT62_MASK));
     }
 }
