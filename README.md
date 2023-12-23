@@ -1,4 +1,4 @@
-uuidv7-java
+uuidv7-java [![Java CI with Maven](https://github.com/rbrick/uuidv7-java/actions/workflows/maven.yml/badge.svg)](https://github.com/rbrick/uuidv7-java/actions/workflows/maven.yml)
 ---
 
 Example Usage:
