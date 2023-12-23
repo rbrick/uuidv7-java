@@ -18,7 +18,6 @@ public class UUIDv7 {
         long lsb = (VAR_LSB & BIT62_MASK) << 62 | rand_b & BIT62_MASK;
 
         return new UUID(msb, lsb);
-
     }
 
     public static UUID newUUIDv7(final SecureRandom random) {
